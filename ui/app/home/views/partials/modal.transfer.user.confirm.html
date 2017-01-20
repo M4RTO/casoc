@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h3 class="modal-title">Confirmar Operación</h3>
+</div>
+<div class="modal-body">
+    <p><span>¿Está Seguro que desea Continuar?</span></p>
+    <div ng-if="vm.entity.genericAccount != null && vm.entity.genericAccount.length > 0">
+        <p>El Usuario {{vm.entity.sAMAccountName}} contiene las siguientes cuentas genericas asociadas:</p>
+        <ul>
+            <li ng-repeat="ga in vm.entity.genericAccount">{{ga}}</li>
+        </ul>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" type="button" ng-click="vm.ok()">Confirmar</button>
+</div>

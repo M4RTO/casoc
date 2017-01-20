@@ -1,0 +1,160 @@
+<div class="jumbotron jumbotron-misc jumbotron-main fix-jumbotron img-misc">
+
+    <!--<nav class="navbar navbar-default">-->
+        <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<div class="navbar-header">-->
+                    <!--<h2 class="navbar-brand" title="Gobierno Electrónico">{{ 'form.user.hedear.titulo' |-->
+                        <!--translate}}</h2>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</nav>-->
+    <div class="container fix-jumbotron-container">
+        <h2>{{ 'user.account.titulo' | translate}}</h2>
+    </div>
+</div>
+<main class="main-container" role="main">
+    <div class="container">
+        <div class="formUser">
+            <form name="formUser" ng-submit="vm.updateUser(formUser)">
+                <div class="row">
+                    <div class="form-group col-md-8 col-md-offset-2">
+                        <label>{{'form.user.cuil' | translate}}</label>
+                        <input type="text" ng-disabled="true" name="employeeID" class="form-control"
+                               aria-describedby="basic-addon1" ng-model="vm.entity.employeeID">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8 col-md-offset-2">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h4><label>{{'form.user.subtitulo.datos.personales' | translate}}</label></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.nombre' | translate}}</label>
+                                <input type="text" ng-disabled="true" class="form-control"
+                                       ng-model="vm.entity.name" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.apellido' | translate}}</label>
+                                <input type="text" ng-disabled="true" class="form-control"
+                                       ng-model="vm.entity.lastName" aria-describedby="basic-addon2">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'user.account.direccion.laboral' | translate}}</label>
+                                <input type="input" class="form-control" ng-model="vm.entity.streetAddress"
+                                       aria-describedby="basic-addon2">
+                                <label><a href="#">{{'user.account.direccion.show' | translate}}</a></label>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'user.account.telefono.laboral' | translate}}</label>
+                                <input type="text" class="form-control" ng-model="vm.entity.telephoneNumber"
+                                       aria-describedby="basic-addon2">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h4><label>{{'form.user.subtitulo.correo' | translate}}</label></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.correo.principal' | translate}}</label>
+                                <input type="email" class="form-control" ng-disabled="true"
+                                       ng-model="vm.entity.mail" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="form-group col-md-6 fix-form-group">
+                                <label>(*)  {{'form.user.correo.alternativo' | translate}}</label>
+                                <input type="email" name="alternativeMail" class="form-control"
+                                       ng-model="vm.entity.alternativeMail" aria-describedby="basic-addon2" required>
+                                <div ng-if="!vm.entity.alternativeMail" class="alert alert-danger"
+                                     role="alert">{{'user.account.msj.error.field.requierd' | translate}}</div>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-repeat="otherMail in vm.entity.otherMailbox">
+                            <div class="form-group col-md-6">
+                                <label>{{'user.account.correo.alias' | translate}}</label>
+                                <input type="email" class="form-control" ng-disabled="true"
+                                       ng-model="otherMail" aria-describedby="basic-addon2">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label ng-if="vm.showAddOtherMail&&!(vm.existUser||!vm.entity.employeeID)"
+                                       ng-click="vm.addOtherMail()">
+                                    {{'form.user.btn.add.correo.alternativo' | translate}}</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h4><label>{{'form.user.subtitulo.otros' | translate}}</label></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.reparticion' | translate}}</label>
+                                <input class="form-control" ng-disabled="true"
+                                       ng-model="vm.dgtal"
+                                       aria-describedby="basic-addon2">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.relacion.laboral' | translate}}</label>
+                                <input class="form-control" ng-disabled="true"
+                                       ng-model="vm.entity.workRelationship"
+                                       aria-describedby="basic-addon2">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h4><label>{{'user.account.subtitulo.password' | translate}}</label></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'user.account.contraseña.actual' | translate}}</label>
+                                <input type="password" class="form-control" ng-model="vm.entity.oldPassword"
+                                       aria-describedby="basic-addon2">
+                                <div ng-if="vm.oldPassword" class="alert alert-danger"
+                                     role="alert">{{'user.account.msj.error.oldpassword.valid' | translate}}</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'user.account.contraseña.nueva' | translate}}</label>
+                                <input type="password" class="form-control" ng-model="vm.entity.newPassword"
+                                       aria-describedby="basic-addon2">
+                                <div ng-if="!vm.newPassword" class="alert alert-danger"
+                                     role="alert">{{'user.account.msj.error.password.valid' | translate}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 col-md-offset-6">
+                                <label>{{'user.account.contraseña.nueva.check' | translate}}</label>
+                                <input type="password" class="form-control" ng-model="vm.entity.newPasswordCheck"
+                                       aria-describedby="basic-addon2">
+                                <div ng-if="vm.ero" class="alert alert-danger"
+                                       role="alert">{{'user.account.contraseña.policy.wrong' | translate}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 col-md-offset-10">
+                                <button type="submit" ng-disabled="!formUser.$valid||!vm.entity.employeeID"
+                                        class="btn btn-primary">Confirmar</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <p class="text-left">(*) Estos campos son requeridos.</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

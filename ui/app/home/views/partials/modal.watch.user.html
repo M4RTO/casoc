@@ -1,0 +1,51 @@
+<div tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.cancel()">×</button>
+        <h3 id="myModalLabel">Detalle del Usuario</h3>
+    </div>
+    <div class="modal-body row">
+        <div class="col-md-4" ng-hide='vm.entity.cn == null || vm.entity.cn == " " '>
+            <label>Nombre y Apellido</label>
+                <p>{{vm.entity.cn}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.alternativeMail == null || vm.entity.alternativeMail == " " '>
+            <label>Mail Alternativo</label>
+            <p>{{vm.entity.alternativeMail}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.employeeID == null || vm.entity.employeeID == " " '>
+            <label>CUIL</label>
+            <p>{{vm.entity.employeeID}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.employeeType == null || vm.entity.employeeType == " " '>
+            <label>Tipo</label>
+            <p>{{vm.entity.employeeType}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.state == null || vm.entity.state == " " '>
+            <label>Estado</label>
+            <p>{{vm.entity.state}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.streetAddress == null || vm.entity.streetAddress == " " '>
+            <label>Direccion</label>
+            <p>{{vm.entity.streetAddress}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.telephoneNumber == null || vm.entity.telephoneNumber == " " '>
+            <label>Telefono</label>
+            <p>{{vm.entity.telephoneNumber}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.workRelationship == null || vm.entity.workRelationship == " " '>
+            <label>Relacion Laboral</label>
+            <p>{{vm.entity.workRelationship}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.mail == null || vm.entity.mail == " " '>
+            <label>Mail</label>
+            <p>{{vm.entity.mail}}</p>
+        </div>
+        <div class="col-md-4" ng-hide='vm.entity.genericAccount.length == 0|| vm.entity.genericAccount == null || vm.entity.genericAccount == " " '>
+            <label>Cuentas genericas</label>
+            <p ng-repeat="genericAccount in vm.entity.genericAccount">{{genericAccount}}</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="vm.cancel()">Cancelar</button>
+    </div>
+</div>

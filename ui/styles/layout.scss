@@ -1,0 +1,129 @@
+@import "loading";
+
+body {
+  padding-top: 0px !important;
+  padding-top: 0px !important;
+}
+
+ul, ol {
+  margin-bottom: 10px !important;
+}
+
+
+table {
+  border-collapse: inherit !important;
+}
+
+footer-cmp{
+  background-color: #3c3c3c;
+}
+
+.formUser{
+}
+
+.navbar-default{
+  background-color: white !important;
+  color:white;
+}
+
+.fix-input-group{
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+
+.fix-form-group{
+  display: inline !important;
+}
+
+.fix-jumbotron{
+  padding-bottom: 20px !important;
+}
+
+.fix-jumbotron-container{
+  padding-bottom: 40px !important;
+  padding-top: 40px !important;
+}
+
+.bac-header{
+  margin-left: 25px !important;
+  margin-top: 15px !important;
+}
+
+.img-misc{
+  background-image: url(edificio.jpg);
+}
+
+
+.bac-header {
+  width: 170px;
+  height: 30px;
+  background-image: url(bac-header.png);
+  background-image: url(bac-header.svg);
+}
+
+
+.bac-footer {
+  width: 170px;
+  height: 30px;
+  background-image: url(bac-footer.png);
+  background-image: url(bac-footer.svg);
+}
+
+.table-gcba{
+  table-layout: fixed;
+}
+
+.text-ellipsis > td{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.input-group-btn-fix{
+  top: 13px;
+}
+
+.button-search-fixed{
+  margin-bottom: 0px;
+  top: 25px;
+}
+
+.glyphicon-ok{
+  color:green;
+}
+
+.glyphicon-remove{
+  color:red;
+}
+
+.footer {
+  padding: 30px 0 0 0 !important;
+}
+
+.view-height{
+  min-height: 500px
+}
+
+.buttons-modal{
+  padding: 20px 0;
+}
+
+.icons-drop{
+  margin: 0px 10px 0 0;
+}
+
+
+.navbar-right .dropdown-menu {
+  right: -15px !important;
+  left: auto;
+}
+
+.img-logo{
+  background-image: url(logo.png);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #777;
+  padding: 41px 53px 7px 3px;
+}

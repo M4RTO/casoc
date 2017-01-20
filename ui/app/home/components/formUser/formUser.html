@@ -1,0 +1,229 @@
+<div class="jumbotron jumbotron-misc jumbotron-main fix-jumbotron img-misc">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <h2 class="navbar-brand" title="Gobierno Electrónico">{{ 'form.user.hedear.titulo' | translate}}</h2>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container fix-jumbotron-container">
+        <h2 ng-bind = "vm.showTitle()"></h2>
+    </div>
+</div>
+<main class="main-container" role="main">
+    <div class="container">
+        <div class="formUser">
+            <form name="formUser" ng-submit="vm.createUser(formUser)">
+                <div class="row">
+                    <div class="form-group col-md-8 col-md-offset-2">
+                        <label>{{'form.user.cuil' | translate}}</label>
+                        <input ng-disabled="vm.inputCuil" type="text" name="employeeID" class="form-control" aria-describedby="basic-addon1"
+                               ng-model="vm.entity.employeeID" ng-blur="vm.verifyUser(vm.entity.employeeID)" required>
+                        <div ng-if="vm.msgError&&formUser.employeeID.$dirty&&vm.entity.employeeID" class="alert alert-danger"
+                             role="alert">{{'form.user.msj.error.existUser' | translate}}</div>
+                        <div ng-if="!vm.entity.employeeID&&formUser.employeeID.$dirty" class="alert alert-danger"
+                             role="alert">{{'form.user.msj.error.field.requierd' | translate}}</div>
+                        <div ng-if="!vm.cuil" class="alert alert-danger"
+                             role="alert">No es un Cuil Valido.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8 col-md-offset-2">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h4><label>{{'form.user.subtitulo.datos.personales' | translate}}</label></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.nombre' | translate}}</label>
+                                <input type="text" ng-disabled="vm.existUser||!vm.entity.employeeID" class="form-control"
+                                       ng-model="vm.entity.name" ng-change="vm.removeAlertCn()" aria-describedby="basic-addon1"
+                                       ng-blur="vm.getListAliasForMail()" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.apellido' | translate}}</label>
+                                <input type="text" ng-disabled="vm.existUser||!vm.entity.employeeID" class="form-control"
+                                       ng-model="vm.entity.lastName" ng-change="vm.removeAlertCn()" aria-describedby="basic-addon2"
+                                       ng-blur="vm.getListAliasForMail()" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.dni' | translate}}</label>
+                                <input type="text" ng-disabled="vm.existUser||!vm.entity.employeeID" class="form-control"
+                                       ng-model="vm.entity.dni" aria-describedby="basic-addon2" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h4><label>{{'form.user.subtitulo.genero' | translate}}</label></h4>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" ng-disabled="vm.existUser||!vm.entity.employeeID"
+                                               ng-model="vm.entity.genero"
+                                               name="radioMasculino" id="optnRadio1" value="m" checked>
+                                        {{'form.user.genero.masculino' | translate}}
+                                    </label>
+                                    <label>
+                                        <input type="radio" ng-disabled="vm.existUser||!vm.entity.employeeID"
+                                               ng-model="vm.entity.genero"
+                                               name="radioFemenino" id="optnRadio2" value="f">
+                                        {{'form.user.genero.femenino' | translate}}
+                                    </label>
+                                    <label>
+                                        <input type="radio" ng-disabled="vm.existUser||!vm.entity.employeeID"
+                                               ng-model="vm.entity.genero"
+                                               name="radioOtro" id="optnRadio3" value="o">
+                                        {{'form.user.genero.otro' | translate}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h4><label>{{'form.user.subtitulo.correo' | translate}}</label></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.correo.principal' | translate}}</label>
+                                <div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" ng-model="vm.mail.alias"
+                                               aria-describedby="basic-addon1" required
+                                               ng-disabled="!vm.mail.enabledInput||vm.existUser||!vm.entity.employeeID" ng-blur="vm.validExistPrincipal()">
+                                        <span class="input-group-addon">{{ 'form.user.mail.principal' | translate}}</span>
+                                    </div>
+                                    <div ng-if="!vm.userPrincipalExist" class="alert alert-danger"
+                                         role="alert">Este Mail ya Existe</div>
+                                    <div class="radio disabled" ng-if="!vm.existUser">
+                                        <label>
+                                            <input type="checkbox" ng-model="vm.mail.enabledInput"
+                                                   ng-disabled="!vm.entity.employeeID">
+                                            {{'form.user.personalizado' | translate}}
+                                        </label>
+                                    </div>
+                                    <div ng-if="!vm.existUser">
+                                        <div class="radio" ng-repeat="alias in vm.listAliasForMail">
+                                            <label>
+                                                <input type="radio" name="optRadio" ng-model="vm.mail.alias"
+                                                       id="optRadio{{$index}}" value="{{alias}}"
+                                                       checked
+                                                       ng-click="vm.mail.enabledInput=false"
+                                                       ng-disabled="vm.mail.enabledInput">
+                                                {{alias}}{{'form.user.mail.principal' | translate}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 fix-form-group">
+                                <label>{{'form.user.correo.alternativo' | translate}}</label>
+                                <input type="email" class="form-control" ng-disabled="vm.existUser||!vm.entity.employeeID"
+                                       ng-model="vm.entity.alternativeMail" ng-blur="vm.validExistMail(vm.entity.alternativeMail)" aria-describedby="basic-addon2" required>
+                                <div ng-if="!vm.alternativeMailExist" class="alert alert-danger"
+                                     role="alert">Este Mail ya Existe</div>
+                            </div>
+                        </div>
+                        <div class="row" ng-repeat="otherMail in vm.otherMailbox">
+                            <div class="form-group col-md-6">
+                                <label>Alias de correo</label>
+                                <div ng-if="!otherMail.created">
+                                    <select class="form-control"
+                                            ng-model="otherMail.domain"
+                                            aria-describedby="basic-addon2" required
+                                            ng-change="vm.getListAlias(otherMail.domain)">
+                                        <option ng-repeat="domain in vm.mailDomain">{{domain}}</option>
+                                    </select>
+                                    <div ng-if="otherMail.domain">
+                                        <div>
+                                            <div class="radio" ng-repeat="alias in vm.listAlias">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" ng-model="otherMail.alias"
+                                                           id="optionsRadios{{$index}}" value="{{alias}}"
+                                                           checked ng-disabled="otherMail.enabledInput">
+                                                    {{alias}}{{otherMail.domain}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="radio disabled">
+                                            <label>
+                                                <input type="checkbox" ng-model="otherMail.enabledInput">
+                                                {{'form.user.personalizado' | translate}}
+                                            </label>
+                                        </div>
+                                        <div class="input-group" ng-if="otherMail.enabledInput">
+                                            <input type="text" class="form-control" ng-model="otherMail.alias"
+                                                   aria-describedby="basic-addon1" required>
+                                            <span class="input-group-addon">{{otherMail.domain}}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" ng-disabled="!(otherMail.alias&&otherMail.domain)"
+                                                ng-click="vm.buildAlias(otherMail)"
+                                                class="btn btn-warning">{{'form.user.btn.accept' | translate}}</button>
+                                        <button type="button"
+                                                ng-click="vm.removeLastOtherMail()"
+                                                class="btn btn-warning">
+                                            {{'form.user.btn.cancel' | translate}}</button>
+                                    </div>
+                                </div>
+                                <div class="input-group" ng-if="otherMail.created">
+                                    <input type="text" class="form-control" ng-model="otherMail.alias"
+                                           aria-describedby="basic-addon1" disabled>
+                                    <span class="input-group-addon">{{otherMail.domain}}</span>
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" ng-click="vm.removeOtherMail($index)">
+                                            <span class="glyphicon glyphicon-trash"/></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label ng-if="vm.mail.alias&&!vm.isMailExist&&vm.showAddOtherMail"
+                                       ng-click="vm.addOtherMail()">
+                                    {{'form.user.btn.add.correo.alternativo' | translate}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h4><label>{{'form.user.subtitulo.otros' | translate}}</label></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.reparticion' | translate}}</label>
+                                <select class="form-control" ng-disabled="vm.disabledOther"
+                                        ng-model="vm.entity.dgtal"
+                                        aria-describedby="basic-addon2" required>
+                                    <option ng-repeat="item in vm.reparticiones" value="{{item.dn}}">{{item.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>{{'form.user.relacion.laboral' | translate}}</label>
+                                <select class="form-control" ng-disabled="vm.disabledOther"
+                                        ng-model="vm.entity.workRelationship"
+                                        aria-describedby="basic-addon2" required>
+                                    <option ng-repeat="item in vm.list" value="{{item}}">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 col-md-offset-10">
+                                <button type="submit" ng-disabled="!formUser.$valid||!vm.entity.employeeID||!vm.alternativeMailExist || !vm.userPrincipalExist || vm.cnMultipleRepeat"
+                                        class="btn btn-primary">Confirmar</button>
+                                <button class="btn btn-primary" ng-click="vm.cancel()">Cancelar</button>
+                            </div>
+                        </div>
+                        <div ng-if="vm.cnMultipleRepeat" class="alert alert-danger"
+                             role="alert">Ya existe un usuario con ese nombre y ese apellido</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--<div class="loading overlay" ng-if="vm.isSaving">-->
+    <!--</div>-->
+</main>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<title>Test</title>
+</head>
+    <body>
+      <cyc-app></cyc-app>
+      <div growl style="margin-top: 10px; width: 300px; position: absolute; top: 65px; left: 100%; margin-left: -306px;"></div>
+      <script src="jspm_packages/system.js"></script>
+      <script src="config.js"></script>
+      <!-- <script src="vendors.js"></script> -->
+      <!-- <script src="dependencies.js"></script> -->
+      <!-- <script src="bundle.js"></script> -->
+      <script>
+        System.import('app/app').then(function() {
+          System.import('styles/layout.css!css');
+          System.import('styles/toaster.css!css');
+          System.import('styles/form-table.css!css');
+          System.import('styles/bootstrap/bootstrap.css!css');
+        });
+      </script>
+      <!--
+      <div id="loading" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: rgba(0, 0, 0, 0.3);"></div>
+      -->
+	</body>
+</html>

@@ -1,0 +1,135 @@
+<main class="main-container" role="main">
+    <div class="container">
+        <div class="row">
+            <div class="form-group col-md-10 col-md-offset-1">
+                <h2>{{'admin.log.title' | translate}}</h2>
+            </div>
+        </div>
+        <div class="formUser">
+            <form name="formUser" ng-submit="vm.createUser(formUser)">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <div class="row">
+                            <div class="form-group col-md-2 col-md-offset-1">
+                                <label>{{'admin.log.table.header.sAMAccountName' | translate}}</label>
+                                <input type="text"  class="form-control"
+                                       ng-model="vm.entity.sAMAccountName" aria-describedby="basic-addon2">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>{{'admin.log.table.header.operator' | translate}}</label>
+                                <input type="text"  class="form-control"
+                                       ng-model="vm.entity.operator" aria-describedby="basic-addon2">
+                            </div>
+                            <div class="col-md-2">
+                                <p class="input-group">
+                                    <label>{{'admin.log.table.header.date.from' | translate}}</label>
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+                                       ng-model="vm.dateFrom" is-open="vm.popup1.opened"
+                                       datepicker-options="vm.dateOptions" close-text="Close" alt-input-formats="altInputFormats" />
+                                    <span class="input-group-btn input-group-btn-fix">
+                                        <button type="button" class="btn btn-default" ng-click="vm.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="input-group">
+                                    <label>{{'admin.log.table.header.date.to' | translate}}</label>
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+                                           ng-model="vm.dateTo" is-open="vm.popup2.opened"
+                                           datepicker-options="vm.dateOptions" close-text="Close" alt-input-formats="altInputFormats" />
+                                    <span class="input-group-btn input-group-btn-fix">
+                                        <button type="button" class="btn btn-default" ng-click="vm.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="form-group col-md-2 button-search-fixed">
+                                <button class="btn btn-primary" ng-click="vm.cancel()">Volver</button>
+                            </div>
+                            <div class="form-group col-md-2 button-search-fixed">
+                                <button class="btn btn-primary" ng-click="vm.searchLog()">Buscar</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-2 col-md-offset-1">
+                                <label>{{'admin.log.table.header.state' | translate}}</label>
+                                <select class="form-control" ng-disabled="!vm.logs ||vm.logs.length == 0"
+                                        ng-model="vm.state"
+                                        aria-describedby="basic-addon2">
+                                    <option value="{{undefined}}">-- TODOS --</option>
+                                    <option value="Successful">Successful</option>
+                                    <option value="Error">Error</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>{{'admin.log.table.header.action' | translate}}</label>
+                                <select class="form-control" ng-disabled="!vm.logs ||vm.logs.length == 0"
+                                        ng-model="vm.action"
+                                        aria-describedby="basic-addon2">
+                                    <option value="{{undefined}}">-- TODOS --</option>
+                                    <option ng-repeat="action in vm.listAction" value="{{action}}">{{action}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>{{'admin.log.table.header.role' | translate}}</label>
+                                <select class="form-control" ng-disabled="!vm.logs||vm.logs.length == 0"
+                                        ng-model="vm.role"
+                                        aria-describedby="basic-addon2">
+                                    <option value="{{undefined}}">-- TODOS --</option>
+                                    <option value="user">user</option>
+                                    <option value="operator">operator</option>
+                                    <option value="admin">admin</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-gcba">
+                                <thead>
+                                    <td tooltip-append-to-body="true">{{ 'admin.log.table.header.sAMAccountName' | translate }}</td>
+                                    <th>{{ 'admin.log.table.header.operator' | translate }}</th>
+                                    <th>{{ 'admin.log.table.header.role' | translate }}</th>
+                                    <th>{{ 'admin.log.table.header.state' | translate }}</th>
+                                    <th>{{ 'admin.log.table.header.action' | translate }}</th>
+                                    <th>{{ 'admin.log.table.header.user' | translate }}</th>
+                                    <th>{{ 'admin.log.table.header.description' | translate }}</th>
+                                    <th>{{ 'admin.log.table.header.date' | translate }}</th>
+                                    <th>{{ 'admin.log.table.header.time' | translate }}</th>
+                                    <th>{{ 'admin.log.table.header.ip' | translate }}</th>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="log in vm.logs | filter:vm.action | filter:vm.state | filter:vm.role" class="text-ellipsis">
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.sAMAccountName}}">{{log.sAMAccountName}}</td>
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.cn}}">{{log.cn}}</td>
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.role}}">{{log.role}}</td>
+                                    <td><span ng-class="[log.state=='Successful'?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove']"></span></td>
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.action}}">{{log.action}}</td>
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.user}}">{{log.user}}</td>
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.description}}">{{log.description}}</td>
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.date}}">{{log.date}}</td>
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.time}}">{{log.time}}</td>
+                                    <td tooltip-append-to-body="true" uib-tooltip="{{log.ip}}">{{log.ip}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-2 col-md-offset-1">
+                        <button class="btn btn-primary" ng-click="vm.clearSearch()">Limpiar</button>
+                    </div>
+
+                    <div class="form-group col-md-2 col-md-offset-6">
+                        <a class="btn btn-primary" ng-show="vm.logs && vm.logs.length > 0" target="_blank" download="" href="/giu-api/audit/csv?access_token={{vm.getAccessToken()}}&operator={{vm.entity.operator}}&sAMAccountName={{vm.entity.sAMAccountName}}&dateFrom={{vm.entity.dateFrom}}&dateTo={{vm.entity.dateTo}}&state={{vm.state}}&action={{vm.action}}&role={{vm.role}}">Descargar CSV</a>
+                    </div>
+                </div>
+            </form>
+        </div> <!--div class="formUser"-->
+    </div> <!--div class="container"-->
+</main>
+
+
+

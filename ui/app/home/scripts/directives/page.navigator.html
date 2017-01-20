@@ -1,0 +1,47 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" ng-disabled = "vmPagination.pageable.page.first"
+                            ng-click="vmPagination.change(vmPagination.pageable.params.page-1)" >
+                         <!--span class="glyphicon glyphicon-search" aria-hidden="true"></span-->
+                        {{ 'search.user.btn.back' | translate }}
+                    </button>
+                    <button class="btn btn-primary" type="button" ng-disabled ="vmPagination.pageable.page.last"
+                            ng-click="vmPagination.change(vmPagination.pageable.params.page+1)">
+                         <!--span class="glyphicon glyphicon-search" aria-hidden="true"></span-->
+                        {{ 'search.user.btn.next' | translate }}
+                    </button>
+                </span>
+                <h3 style="padding-left: 30px;">{{vmPagination.pageable.page.number}}/{{vmPagination.pageable.page.totalPages-1}}</h3>
+            </div>
+        </div>
+    </div>
+    <!--div table-pagination="params">
+    <div class="table-pager">
+        <ul class="pagination table-pagination">
+            <li ng-class="{disabled: vmPagination.pageable.page.first}">
+                <a href="" ng-click="vmPagination.pageable.page.first || vmPagination.change(vmPagination.pageable.page.number-1)">
+                    <i class="zmdi zmdi-chevron-left"></i>
+                </a>
+            </li>
+            <li ng-class="{disabled: vmPagination.pageable.page.last}">
+                <a href="" ng-click="vmPagination.pageable.page.last || vmPagination.change(vmPagination.pageable.page.number+1)">
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div-->
+
+<!--    <div class="container">
+        <button class="btn btn-primary" type="button"
+                ng-click="vmPagination.change(i)" ng-repeat="i in vmPagination.range(0,vmPagination.pageable.page.totalPages)">
+            {{i}}
+        </button>
+    </div>-->
+    
+    </div>
+
+

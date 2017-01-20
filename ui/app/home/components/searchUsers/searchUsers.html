@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="form-group col-md-10 col-md-offset-1">
+            <h2>{{ 'search.user.titulo' | translate }}</h2>
+            <div class="text-right">
+                <button  class="btn btn-primary" ng-click="vm.lowPhysical()" ng-disabled="!vm.userSelected||!vm.userSelected.isBelongToOU">{{ 'search.user.btn.lowPhysical' | translate }}</button>
+                <button  class="btn btn-primary" ng-click="vm.low()" ng-disabled="!vm.userSelected||!vm.userSelected.isBelongToOU||vm.hasEmployeeType()">{{ 'search.user.btn.low' | translate }}</button>
+                <button  class="btn btn-primary" ng-click="vm.modify()" ng-disabled="!vm.userSelected||!vm.userSelected.isBelongToOU">{{ 'search.user.btn.modify' | translate }}</button>
+                <button  class="btn btn-primary" ng-disabled="!vm.canTranfer()" ng-click="vm.transfer()">{{ 'search.user.btn.transfer' | translate }}</button>
+                <button  class="btn btn-primary" ng-click="vm.addEntity()">{{ 'search.user.btn.high' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="input-group">
+                <input type="text" ng-model="vm.query"  ng-keypress="vm.onEnter($event,vm.query)" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" ng-disabled="!vm.acceptable(vm.query)" type="button" ng-click="vm.search(vm.query)" >
+                         <!--span class="glyphicon glyphicon-search" aria-hidden="true"></span-->
+                        {{ 'search.user.btn.search' | translate }}
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="form-group col-md-10 col-md-offset-1">
+            <div class="table-responsive" style="overflow-x: initial;">
+                <table class="table table-striped table-condensed table-hover table-gcba">
+                   <thead>
+                    <th>{{ 'search.user.table.header.name' | translate }}</th>
+                    <th>{{ 'search.user.table.header.cuil' | translate }}</th>
+                    <th>{{ 'search.user.table.header.mail' | translate }}</th>
+                    <th>{{ 'search.user.table.header.dependency' | translate }}</th>
+                    <th>{{ 'search.user.table.header.workrelationship' | translate }}</th>
+                    <th>{{ 'search.user.table.header.telephone' | translate }}</th>
+                    <th>{{ 'search.user.table.header.tipo' | translate }}</th>
+                    <th>{{ 'search.user.table.header.estado' | translate }}</th>
+                   </thead>
+                    <tbody>
+                        <tr class="text-ellipsis" ng-repeat="user in vm.page.content" ng-click="vm.selectecUser(user)"
+                            ng-class="[user.sAMAccountName==vm.userSelected.sAMAccountName? 'info' : '']">
+                            <td tooltip-append-to-body="true" uib-tooltip="{{user.cn}}">{{user.cn}}</td>
+                            <td tooltip-append-to-body="true" uib-tooltip="{{user.employeeID}}">{{user.employeeID}}</td>
+                            <td tooltip-append-to-body="true" uib-tooltip="{{user.mail}}">{{user.mail}}</td>
+                            <td tooltip-append-to-body="true" uib-tooltip="{{user.dgtal}}">{{user.dgtal}}</td>
+                            <td tooltip-append-to-body="true" uib-tooltip="{{user.workRelationship}}">{{user.workRelationship}}</td>
+                            <td tooltip-append-to-body="true" uib-tooltip="{{user.telephoneNumber}}">{{user.telephoneNumber}}</td>
+                            <td tooltip-append-to-body="true" uib-tooltip="{{user.employeeType}}">{{user.employeeType}}</td>
+                            <td tooltip-append-to-body="true" uib-tooltip="{{user.state}}">{{user.state}}</td>
+                            <td>
+                                <span class="input-group-btn-fix">
+                                <button type="button" class="btn btn-default" ng-click="vm.watch(user.sAMAccountName)"><i class="glyphicon glyphicon-eye-open"></i></button>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-if="vm.entityNotFound"class="alert alert-danger alert-dismissable">
+                    <strong>UPS!</strong> No se han encontrado resultados para tu búsqueda .
+                </div>
+                <page-navigator ng-show="!vm.entityNotFound" ng-if="vm.page.content" pageable="vm"></page-navigator>
+            </div>
+        </div>
+    </div>
+</div>

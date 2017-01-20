@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <h1>Configuracion de Cuentas Genericas</h1>
+        <div class="form-group panel panel-default">
+            <div class="panel-heading">Cuentas</div>
+            <div style="overflow-x: initial;">
+
+                <table class=" table ">
+                    <tbody>
+                    <tr class="text-ellipsis"ng-repeat="user in vm.user.genericAccount">
+
+                    <td>
+                       <strong> {{user}}</strong>
+                    </td>
+                    <td>
+                        <span class="input-group-btn-fix">
+                                <button type="button" class="btn btn-inverse" ng-click="vm.openModal(user)"><i
+                                        class="glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
+                            </span>
+                    </td>
+                    </tbody>
+
+                </tr>
+                </table>
+                <!--<table class="table table-striped table-condensed table-hover table-gcba">
+                    <tbody>
+                    <tr class="text-ellipsis" ng-repeat="user in vm.user.genericAccount">
+                        <td>{{user}}</td>
+                        <td><span class="input-group-btn-fix">
+                                <button type="button" class="btn btn-default" ng-click="vm.openModal(user)"><i
+                                        class="glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
+                                </span></td>
+                    </tr>
+                    </tbody>
+                </table>-->
+
+            </div>
+        </div>
+        <div class="form-group col-md-4 col-md-offset-4">
+            <button ng-click="vm.back()"
+                    class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-share-alt"></i>Volver
+            </button>
+        </div>
+    </div>
+</div>
+
