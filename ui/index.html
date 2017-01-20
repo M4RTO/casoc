@@ -7,6 +7,8 @@
     <body>
       <cyc-app></cyc-app>
       <div growl style="margin-top: 10px; width: 300px; position: absolute; top: 65px; left: 100%; margin-left: -306px;"></div>
+      <link rel="stylesheet" href="styles/fontawesome/font-awesome.min.css">
+      <link rel="stylesheet" href="styles/animate.css">
       <script src="jspm_packages/system.js"></script>
       <script src="config.js"></script>
       <!-- <script src="vendors.js"></script> -->
@@ -15,7 +17,8 @@
       <script>
         System.import('app/app').then(function() {
           System.import('styles/layout.css!css');
-          System.import('styles/toaster.css!css');
+            System.import('styles/animate.css!css');
+            System.import('styles/toaster.css!css');
           System.import('styles/form-table.css!css');
           System.import('styles/bootstrap/bootstrap.css!css');
         });

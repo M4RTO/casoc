@@ -2,7 +2,7 @@
 'use strict';
 
 import angular from 'angular';
-// import 'giu-module-security/app/scripts/sec.module.js';
+import 'giu-module-security/app/scripts/sec.module.js';
 import 'angular-resource';
 import 'angular-ui-router';
 import 'angular-loading-bar';
@@ -34,10 +34,10 @@ const app = angular.module('cyc-ui.app',
   [
     'ui.router',
       'ngAnimate',
-      // 'security.module',
+      'security.module',
     'crud.module',
     'ui.bootstrap',
-    'giu-ui-templates',
+    'cyc-ui-templates',
     'pascalprecht.translate',
     'angular-loading-bar',
     'ngCookies',
