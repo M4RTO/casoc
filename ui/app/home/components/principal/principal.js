@@ -1,7 +1,4 @@
 'use strict';
-/**
- * Created by julian on 25/07/16.
- */
 
 import angular from 'angular';
 import { PrincipalComponent } from './principal.component';

@@ -7,7 +7,7 @@
 import angular from 'angular';
 import { SearchUsersComponent } from './searchUsers.component';
 import PageNavigator from '../../scripts/directives/page.navigator.dir.js';
-import RoleService from '../../scripts/services/gcba.role.srv';
+// import RoleService from '../../scripts/services/gcba.role.srv';
 
 
 
@@ -16,12 +16,11 @@ import RoleService from '../../scripts/services/gcba.role.srv';
 const searchUsers = angular
     .module('searchUsers', [])
     .component('searchUsersComponent', SearchUsersComponent)
-    .service('RoleService', RoleService)
     .directive('pageNavigator', PageNavigator.directiveFactory)
     .config(($stateProvider, $urlRouterProvider) => {
         $stateProvider
-            .state('users', {
-                url: '/users?nameOrMail',
+            .state('home', {
+                url: '/',
                 component: 'searchUsersComponent'
             });
         $urlRouterProvider.otherwise('/');

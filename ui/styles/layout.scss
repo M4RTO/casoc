@@ -127,3 +127,19 @@ footer-cmp{
   color: #777;
   padding: 41px 53px 7px 3px;
 }
+
+@font-face {
+  font-family: 'DosisBold';
+  src: url('../fonts/roboto/dosis-bold.svg');
+  //src: url('../fonts/roboto/dosis-bold.eot') format('embedded-opentype'),
+}
+
+h2{
+  font-size:38px;
+  color:#222222;
+  font-family:'Dosis';
+  font-weight:700;
+  margin:35px 0 25px 0;
+  text-align:center;
+  text-transform:uppercase;
+}

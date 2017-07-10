@@ -7,13 +7,11 @@ import angular from 'angular';
 
 import { NavBarComponent } from './navBar/navBar.component';
 import { FooterComponent } from './footer/footer.component';
-import RoleService from '../../scripts/services/gcba.role.srv';
 
 
 const common = angular
     .module('app.common', [])
     .component('navBar', NavBarComponent)
-    .service('RoleService', RoleService)
     .component('footerCmp', FooterComponent)
     .name;
 

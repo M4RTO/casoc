@@ -7,7 +7,7 @@ import Saveable from 'module-crud-ui/app/scripts/crud.saveable.js';
 export default class navBarCtrl extends Saveable{
 
     /*@ngInject*/
-    constructor($injector, $state,OAuth,RoleService,$cookies) {
+    constructor($injector, $state,OAuth,$cookies) {
 
         super(
             {
@@ -27,7 +27,7 @@ export default class navBarCtrl extends Saveable{
         // this.showLog = false;
         // this.showBT = false;
         // this.showFile = false;
-        // this.state = $state;
+        this.state = $state;
     }
 
     // getMyRole(){
@@ -43,8 +43,8 @@ export default class navBarCtrl extends Saveable{
     //     this.roleService.getState();
     // }
     //
-    // goToMyFile(){
-    //     this.state.go('userAccount',{});
+    // goToMyHome(){
+    //     this.state.go('home',{});
     // }
     //
     // logout(){

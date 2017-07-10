@@ -1,6 +1,3 @@
-/**
- * Created by julian on 25/07/16.
- */
 'use strict';
 import Saveable from 'module-crud-ui/app/scripts/crud.saveable.js';
 
