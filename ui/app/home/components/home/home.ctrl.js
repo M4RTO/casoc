@@ -4,7 +4,7 @@ import Pageable from 'module-crud-ui/app/scripts/crud.pageable.js';
 // import DetailUserController from '../detailUserModal/detailUser.crtl';
 // import createEntityCtrl from '.././createEntity/createEntity.ctrl';
 
-export default class searchUsersCtrl extends Pageable {
+export default class homeCtrl extends Pageable {
     /*@ngInject*/
     constructor($injector, $state, $uibModal, $cookies) {
         super(

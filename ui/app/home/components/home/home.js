@@ -1,11 +1,8 @@
 
 'use strict';
-/**
- * Created by julian on 25/07/16.
- */
 
 import angular from 'angular';
-import { SearchUsersComponent } from './searchUsers.component';
+import { HomeComponent } from './home.component';
 import PageNavigator from '../../scripts/directives/page.navigator.dir.js';
 // import RoleService from '../../scripts/services/gcba.role.srv';
 
@@ -13,18 +10,18 @@ import PageNavigator from '../../scripts/directives/page.navigator.dir.js';
 
 
 
-const searchUsers = angular
-    .module('searchUsers', [])
-    .component('searchUsersComponent', SearchUsersComponent)
+const home = angular
+    .module('home', [])
+    .component('homeComponent', HomeComponent)
     .directive('pageNavigator', PageNavigator.directiveFactory)
     .config(($stateProvider, $urlRouterProvider) => {
         $stateProvider
             .state('home', {
                 url: '/',
-                component: 'searchUsersComponent'
+                component: 'homeComponent'
             });
         $urlRouterProvider.otherwise('/');
     })
     .name;
 
-export default searchUsers;
+export default home;

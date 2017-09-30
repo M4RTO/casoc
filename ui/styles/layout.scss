@@ -62,7 +62,7 @@ footer-cmp{
   background-image: url(bac-header.svg);
 }
 
-
+  
 .bac-footer {
   width: 170px;
   height: 30px;
@@ -120,7 +120,7 @@ footer-cmp{
 }
 
 .img-logo{
-  background-image: url(logo.png);
+  content:url("logo2.png");
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -129,17 +129,30 @@ footer-cmp{
 }
 
 @font-face {
-  font-family: 'DosisBold';
-  src: url('../fonts/roboto/dosis-bold.svg');
-  //src: url('../fonts/roboto/dosis-bold.eot') format('embedded-opentype'),
+  font-family: 'solido';
+  src: url('../fonts/roboto/Anisa Sans.ttf');
 }
-
 h2{
   font-size:38px;
   color:#222222;
-  font-family:'Dosis';
+  font-family:'solido' !important;
   font-weight:700;
   margin:35px 0 25px 0;
   text-align:center;
   text-transform:uppercase;
 }
+
+.navbar-default .navbar-nav > li > a {
+  color: #777;
+  font-family: 'solido' !important;
+  padding: 50px 118px 20px 0px;
+  
+}
+
+p {
+  font-size:20px;
+  color:#222222;
+  font-family:'solido';
+}
+
+  

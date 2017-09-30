@@ -1,9 +1,9 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
-<svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20110222 at Wed Sep 10 00:24:18 2014
- By Orthosie Webhosting
+Created by FontForge 20161003 at Sat Sep 30 17:26:44 2017
+ By www-data
 Copyright (c) 2011, 2012, Pablo Impallari (www.impallari.com|impallari@gmail.com), Copyright (c) 2011, 2012, Edgar Tolentino, Copyright (c) 2011, 2012,  Igino Marini (mail@ikern.com), with Reserved Font Name "Dosis"
 </metadata>
 <defs>
@@ -20,7 +20,7 @@ Copyright (c) 2011, 2012, Pablo Impallari (www.impallari.com|impallari@gmail.com
     cap-height="731"
     bbox="-132 -237 1099 1012"
     underline-thickness="26"
-    underline-position="-25"
+    underline-position="-51"
     unicode-range="U+000D-FB02"
   />
 <missing-glyph horiz-adv-x="388" 
@@ -1897,6 +1897,48 @@ q-16 -33 -53.5 -56t-82.5 -23z" />
     <hkern g1="r.ss04" u2="&#x29;" k="35" />
     <hkern g1="u.ss04" u2="\" k="25" />
     <hkern g1="u.ss04" u2="&#x3f;" k="24" />
+    <hkern g1="slash"
+	g2="A,Agrave,Aacute,Acircumflex,Atilde,Adieresis,Aring,Amacron,Abreve,Aogonek"
+	k="42" />
+    <hkern g1="slash"
+	g2="AE,AEacute"
+	k="12" />
+    <hkern g1="slash"
+	g2="J,Jcircumflex"
+	k="49" />
+    <hkern g1="slash"
+	g2="C,G,O,Q,Ccedilla,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Oslash,Cacute,Ccircumflex,Cdotaccent,Ccaron,Gcircumflex,Gbreve,Gdotaccent,Gcommaaccent,Omacron,Obreve,Ohungarumlaut,OE,Oslashacute"
+	k="11" />
+    <hkern g1="slash"
+	g2="a,agrave,aacute,acircumflex,atilde,adieresis,aring,ae,amacron,abreve,aogonek,aeacute,a.ss01"
+	k="45" />
+    <hkern g1="slash"
+	g2="g,gcircumflex,gbreve,gdotaccent,gcommaaccent"
+	k="47" />
+    <hkern g1="slash"
+	g2="m,n,r,ntilde,nacute,ncommaaccent,ncaron,eng,racute,rcommaaccent,rcaron"
+	k="40" />
+    <hkern g1="slash"
+	g2="m.ss04,n.ss04,r.ss04"
+	k="52" />
+    <hkern g1="slash"
+	g2="c,d,e,o,q,ccedilla,egrave,eacute,ecircumflex,edieresis,eth,ograve,oacute,ocircumflex,otilde,odieresis,oslash,cacute,ccircumflex,cdotaccent,ccaron,dcaron,dcroat,emacron,ebreve,edotaccent,eogonek,ecaron,omacron,obreve,ohungarumlaut,oe,oslashacute,g.ss03,q.ss02"
+	k="50" />
+    <hkern g1="slash"
+	g2="s,sacute,scircumflex,scedilla,scaron,scommaaccent"
+	k="46" />
+    <hkern g1="slash"
+	g2="u,ugrave,uacute,ucircumflex,udieresis,utilde,umacron,ubreve,uring,uhungarumlaut,uogonek,u.ss04"
+	k="39" />
+    <hkern g1="slash"
+	g2="w,wcircumflex,wgrave,wacute,wdieresis"
+	k="27" />
+    <hkern g1="slash"
+	g2="y,yacute,ydieresis,ycircumflex,ygrave"
+	k="27" />
+    <hkern g1="slash"
+	g2="z,zacute,zdotaccent,zcaron"
+	k="33" />
     <hkern g1="asterisk"
 	g2="A,Agrave,Aacute,Acircumflex,Atilde,Adieresis,Aring,Amacron,Abreve,Aogonek"
 	k="25" />

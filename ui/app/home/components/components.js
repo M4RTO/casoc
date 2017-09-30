@@ -7,7 +7,7 @@ import principal from './principal/principal';
 import formUser from './formUser/formUser';
 import userAccount from './userAccount/userAccount';
 import password from './password/password';
-import searchUsers from './searchUsers/searchUsers';
+import searchUsers from './home/home';
 import adminOperator from './adminOperator/adminOperator';
 import formMail from './formMail/formMail';
 import adminLog from './adminLog/adminLog';
