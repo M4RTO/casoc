@@ -1,20 +1,36 @@
-<div id="top_content" class="top_cont_outer">
-    <div class="top_cont_inner">
-        <div class="container">
-            <div class="top_content">
-                <div class="row">
-                    <div class="col-lg-5 col-sm-7">
-                        <div class="top_left_cont flipInY wow animated">
-                            <h2>Nos sumamos a su Staff en forma dinamica y profesional</h2>
-                            <p> Somos un equipo de profesionales que brinda asesoramiento integral, acompañamos su actividad con valores que facilitaran su "Toma de Decisiones", óptimizando cada area y facilitando su crecimiento.
-                            </p>
-                       </div>
-                    </div>
-                    <div class="col-lg-7 col-sm-5">
-                        <div class="flipInX wow animated">
-                            <img class="img-responsive" src="/asociados.jpg" alt="reunion-asociados">
-                        </div>
-                    </div>
+<!--<div id="top_content" class="top_cont_outer">-->
+    <!--<div class="top_cont_inner">-->
+        <!--<div class="container">-->
+            <!--<div class="top_content">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-lg-5 col-sm-7">-->
+                        <!--<div class="top_left_cont flipInY wow animated">-->
+                            <!--<h2>Nos sumamos a su Staff en forma dinamica y profesional</h2>-->
+                            <!--<p> El estudio se dedica al asesoramiento contable, tributario, financiero y laboral como otros diferenciales y con valor agregado de consultoría y exportación de servicios basados en el conocimiento.-->
+                            <!--</p>-->
+                       <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-7 col-sm-5">-->
+                        <!--<div class="flipInX wow animated">-->
+                            <!--<img class="img-responsive" src="/asociados.jpg" alt="reunion-asociados">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+
+<div>
+    <div style="height: 305px">
+        <div uib-carousel active="vm.active" interval="vm.myInterval" no-wrap="vm.noWrapSlides">
+            <div uib-slide ng-repeat="slide in vm.slides track by slide.id" index="slide.id">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                    <h4>Slide {{slide.id}}</h4>
+                    <p>{{slide.text}}</p>
                 </div>
             </div>
         </div>

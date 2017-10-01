@@ -6,7 +6,7 @@ body {
 }
 
 ul, ol {
-  margin-bottom: 10px !important;
+  margin-bottom: -1px !important;
 }
 
 
@@ -143,10 +143,16 @@ h2{
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #777;
   font-family: 'solido' !important;
   padding: 50px 118px 20px 0px;
   
+}
+
+
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  color: rgb(49, 118, 255) !important;
+  background-color: rgba(238, 238, 238, 0)!important;
 }
 
 p {
@@ -155,4 +161,34 @@ p {
   font-family:'solido';
 }
 
+.navbar{
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  background: beige;
+}
+
+.navbar-nav > li > a {
+  padding-top: 13px;
+  padding-bottom: 15px;
+  font-family: 'Solido';
+  color: #000000 !important;
+  display: inline-block ;
+  list-style-type: none;
+}
+
+
+a {
+  color: #000000 !important;
+  text-decoration: none;
+}
+
+.carousel-inner{
+  position: relative;
+  width: 100%;
+  zoom: 220%;
+  margin: 0px 27px 0px 0px;
+  overflow: hidden;
+}
   

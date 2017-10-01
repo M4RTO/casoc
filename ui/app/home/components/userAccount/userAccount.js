@@ -1,6 +1,4 @@
-/**
- * Created by julian on 04/08/16.
- */
+
 'use strict';
 
 import angular from 'angular';
@@ -16,7 +14,7 @@ const userAccount = angular
     .config(($stateProvider, $urlRouterProvider) => {
         $stateProvider
             .state('userAccount', {
-                url: '/user/config',
+                url: '/pymes',
                 component: 'userAccountComponent'
             });
         $urlRouterProvider.otherwise('/');

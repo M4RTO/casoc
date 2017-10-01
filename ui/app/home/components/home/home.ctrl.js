@@ -10,220 +10,71 @@ export default class homeCtrl extends Pageable {
         super(
             {
                 injector: $injector,
-                endpoint: 'searchUsers',
+                endpoint: "",
                 backToState: ".",
                 key: 'id',
                 executeGet: false,
-                params: $state.params,
-                selectable: {
-                    itemKey: 'cid',
-                    enabled: true,
-                    params: {}
-                }
-
+                params: $state.params
             }
         );
-        // this.cookies = $cookies;
-        // this.roleService = RoleService;
-        // this.getMyRole();
-        // this.uibModal = $uibModal;
-        // if (this.params.nameOrMail) {
-        //     this.query = this.params.nameOrMail;
-        //     this.search(this.params.nameOrMail);
-        //
-        // }
+        this.myInterval = 2500;
+        this.noWrapSlides = true;
+        this.active = 0;
+        this.slides = this.slides = [];
+        this.currIndex = 0;
+        for (var i = 0; i < 4; i++) {
+            this.addSlide();
+        };
+    
     }
-
-  
-
-    // hasEmployeeType() {
-    //     return this.userSelected.employeeType == "Mail" || this.userSelected.state == "Deshabilitado"
-    // }
-    //
-    // acceptable(query) {
-    //     if (query == undefined || query.length < 3) {
-    //         return false
-    //     } else {
-    //         return true;
-    //
-    //     }
-    // }
-    //
-    // search(query) {
-    //     if (!query) {
-    //         return false;
-    //     }
-    //     if(this.page.number > 0 || this.page.number == undefined)
-    //         this.page.number = 0;
-    //     this.lastQuery = query;
-    //     this.$state.params.nameOrMail = query;
-    //     this.params.nameOrMail = query;
-    //     let response = this.get();
-    //     response.$promise.then((result) => {
-    //         if (result.content.length > 0) {
-    //             this.entityNotFound = false;
-    //         } else {
-    //             this.userSelected = undefined;
-    //             this.entityNotFound = true;
-    //         }
-    //     });
-    //     return response;
-    // }
-    //
-    // _addParams() {
-    //     if (this.params.nameOrMail) {
-    //         return {page: this.$location.search().page};
-    //     } else {
-    //         return this.$location.search();
-    //     }
-    // }
-    //
-    // selectecUser(user) {
-    //     this.userSelected = user;
-    // }
-    //
-    // transfer() {
-    //     if (!this.userSelected) {
-    //         return false;
-    //     }
-    //     if (this.userSelected.isTransfer) {
-    //         this.openModalConfirm()
-    //             .result
-    //             .then((a) => {
-    //                 this.deleteUser(this.userSelected.employeeID);
-    //             });
-    //     } else {
-    //         this.openModalConfirm()
-    //             .result
-    //             .then((a) => {
-    //                 this.transferUser(this.userSelected.employeeID);
-    //             });
-    //     }
-    // }
-    //
-    // lowPhysical() {
-    //     this.openModalConfirm()
-    //         .result
-    //         .then((a) => {
-    //             this.response = this.api.userPhysical.remove({id: this.userSelected.sAMAccountName});
-    //             this.response.$promise.then((result) => {
-    //                 this.search(this.lastQuery);
-    //                 this.userSelected = undefined;
-    //             });
-    //         });
-    //
-    // }
-    //
-    // low() {
-    //     this.openModalConfirm()
-    //         .result
-    //         .then((a) => {
-    //             this.response = this.api.member.update({id: this.userSelected.employeeID})
-    //                 .$promise
-    //                 .then(()=> {
-    //                     this.userSelected = undefined;
-    //                     this.search(this.lastQuery);
-    //                 }, (error)=> {
-    //                     if (error.status == 502) {
-    //                         this.noDGTALModal();
-    //                     }
-    //                 });
-    //         });
-    //     return this.response;
-    // }
-    //
-    // deleteUser(employeeID) {
-    //     this.response = this.api.transferUser.remove({employeeID: employeeID});
-    //     this.response.$promise.then((result) => {
-    //         this.search(this.lastQuery);
-    //         this.userSelected = undefined;
-    //     });
-    //     return this.response;
-    // }
-    //
-    // modify() {
-    //     if (this.userSelected.employeeType == "Mail") {
-    //         this.$state.go('mail', {id: this.userSelected.sAMAccountName});
-    //     } else {
-    //         this.$state.go('user', {id: this.userSelected.employeeID});
-    //     }
-    // }
-    //
-    // transferUser(employeeID) {
-    //     this.response = this.api.transferUser.save({employeeID: employeeID});
-    //     this.response.$promise.then((result) => {
-    //         this.search(this.lastQuery);
-    //         this.userSelected = undefined;
-    //     });
-    //     return this.response;
-    // }
-    //
-    //
-    // addEntity() {
-    //     var modalInstance = this.uibModal.open({
-    //         animation: true,
-    //         templateUrl: 'home/components/createEntity/createEntity.html',
-    //         size: 'sm',
-    //         controller: createEntityCtrl,
-    //         controllerAs: 'vm'
-    //     });
-    // }
-    //
-    // canTranfer() {
-    //     if (!this.userSelected) {
-    //         return false;
-    //     }
-    //
-    //     return this.userSelected.isBelongToOU || this.userSelected.isTransfer;
-    // }
-    //
-    //
-    // noDGTALModal() {
-    //     let self = this;
-    //     let modalInstance = this.uibModal.open({
-    //         animation: true,
-    //         templateUrl: 'home/views/partials/modal.dgtal.user.noMine.html',
-    //         size: 'sm'
-    //     });
-    // }
-    //
-    //
-    // openModalConfirm() {
-    //     let self = this;
-    //     return this.uibModal.open({
-    //         animation: true,
-    //         templateUrl: 'home/views/partials/modal.transfer.user.confirm.html',
-    //         //size: 'sm',
-    //         controller: ModalConfirmController,
-    //         controllerAs: 'vm',
-    //         resolve: {
-    //             detailUser: function () {
-    //                 return self.userSelected;
-    //             }
-    //         }
-    //     });
-    // }
-    //
-    // watch(detailUser) {
-    //     return this.uibModal.open({
-    //         animation: true,
-    //         templateUrl: 'home/views/partials/modal.watch.user.html',
-    //         size: 'lg',
-    //         controller: DetailUserController,
-    //         controllerAs: 'vm',
-    //         resolve: {
-    //             detailUser: function () {
-    //                 return detailUser;
-    //             }
-    //         }
-    //     });
-    // }
-    //
-    // onEnter(keyEvent, query) {
-    //     if (keyEvent.which === 13) {
-    //         this.search(query);
-    //     }
-    // }
+    
+    addSlide() {
+        var newWidth = 600 + this.slides.length + 1;
+        this.slides.push({
+            image: '//unsplash.it/' + newWidth + '/300',
+            text: ['Nice image','Awesome photograph','That is so cool','I love that'][this.slides.length % 4],
+            id: this.currIndex++
+        });
+    };
+    
+    randomize() {
+        var indexes = this.generateIndexesArray();
+        this.assignNewIndexesToSlides(indexes);
+    };
+    
+    
+    
+    assignNewIndexesToSlides (indexes) {
+        for (var i = 0, l = this.slides.length; i < l; i++) {
+            this.slides[i].id = indexes.pop();
+        }
+    }
+    
+    generateIndexesArray() {
+        var indexes = [];
+        for (var i = 0; i < this.currIndex; ++i) {
+            indexes[i] = i;
+        }
+        return this.shuffle(indexes);
+    }
+    
+    shuffle(array) {
+        var tmp, current, top = array.length;
+        
+        if (top) {
+            while (--top) {
+                current = Math.floor(Math.random() * (top + 1));
+                tmp = array[current];
+                array[current] = array[top];
+                array[top] = tmp;
+            }
+        }
+        
+        return array;
+    }
+    
+    
+    
     
     
 }
